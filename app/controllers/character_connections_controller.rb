@@ -1,0 +1,2 @@
+class CharacterConnectionsController < ApplicationController
+end
