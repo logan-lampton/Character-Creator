@@ -10,9 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_04_181127) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_09_163409) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abilities", force: :cascade do |t|
+    t.integer "strength"
+    t.integer "dexterity"
+    t.integer "constitution"
+    t.integer "intelligence"
+    t.integer "wisdom"
+    t.integer "charisma"
+    t.integer "character_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "character_classes", force: :cascade do |t|
+    t.string "name"
+    t.integer "character_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "character_connections", force: :cascade do |t|
     t.integer "user_id"
@@ -24,6 +43,38 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_181127) do
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "descriptions", force: :cascade do |t|
+    t.string "background"
+    t.string "alignment"
+    t.string "faith"
+    t.string "lifestyle"
+    t.string "hair"
+    t.string "skin"
+    t.string "eyes"
+    t.string "height"
+    t.integer "weight"
+    t.integer "age"
+    t.string "personality_traits"
+    t.string "ideals"
+    t.string "bonds"
+    t.string "flaws"
+    t.string "organizations"
+    t.string "allies"
+    t.string "enemies"
+    t.string "backstory"
+    t.string "other"
+    t.integer "character_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "races", force: :cascade do |t|
+    t.string "name"
+    t.integer "character_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :descriptions
+  resources :abilities
+  resources :character_classes
   resources :races
   resources :character_connections
   resources :characters
