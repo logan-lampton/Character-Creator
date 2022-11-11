@@ -2,7 +2,7 @@ class CharactersController < ApplicationController
 
  # GET /characters
  def index
-    characters = Characters.all
+    characters = Character.all
     render json: characters, status: :ok
 end
 
@@ -56,7 +56,7 @@ end
 private
 
 def character_params
-    params.permit(:name, :image)
+    params.permit(:name, :image, :user_id, :campaign_id)
 end
 
 end

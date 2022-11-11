@@ -60,7 +60,7 @@ function Register({updateUser}) {
                     <input type="password" name="password" placeholder="enter password" value={password} onChange={handleChange} />
                 <label>Password Confirmation</label>
                     <input type="password" name="passwordConfirmation" placeholder="reenter password" value={passwordConfirmation} onChange={handleChange} />
-                <input type="submit" value="Sign up!" />
+                <input type="submit" value="Sign up!"/>
             </form>
             <Link to="/">
                 <button className="link-btn">Already have an account? Log in here!</button>

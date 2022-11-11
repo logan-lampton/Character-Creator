@@ -2,7 +2,7 @@ class CharacterClassesController < ApplicationController
 
 # GET /character_classes
  def index
-    character_classes = CharacterClasses.all
+    character_classes = CharacterClass.all
     render json: character_classes, status: :ok
 end
 

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :campaigns
   resources :descriptions
   resources :abilities
   resources :character_classes
@@ -18,4 +19,7 @@ Rails.application.routes.draw do
     to: 'fallback#index',
     constraints: ->(req) { !req.xhr? && req.format.html? }
 
+  post "/login", to: "sessions#create"
+  get '/authorized_user', to: 'users#show'
+  delete '/logout', to: 'sessions#destroy'
 end

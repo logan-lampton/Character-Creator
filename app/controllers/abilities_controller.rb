@@ -2,7 +2,7 @@ class AbilitiesController < ApplicationController
 
 # GET /abilities
 def index
-    abilties = Abilities.all
+    abilities = Ability.all
     render json: abilities, status: :ok
 end
 

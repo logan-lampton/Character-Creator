@@ -2,7 +2,7 @@ class DescriptionsController < ApplicationController
 
 # GET /descriptions
 def index
-    descriptions = Descriptions.all
+    descriptions = Description.all
     render json: descriptions, status: :ok
 end
 

@@ -2,7 +2,7 @@ class RacesController < ApplicationController
 
 # GET /races
  def index
-    races = Races.all
+    races = Race.all
     render json: races, status: :ok
 end
 
