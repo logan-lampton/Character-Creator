@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Select from 'react-select';
 
-function Elf(props) {
+function Wizard(props) {
 
     const draconicAncestory = [
         {value: "black", label: "Black Dragon"},
@@ -27,7 +27,7 @@ function Elf(props) {
         <div className="popup-inner">
             <button className="close-btn" onClick={() => props.setTrigger(false)}>close</button>
             {props.children}
-            <h1>Dragonborn</h1>
+            <h1>Wizard</h1>
             <img src="https://www.dndbeyond.com/avatars/9/361/636327455772826858.jpeg?width=1000&height=1000&fit=bounds&quality=95&auto=webp"/>
             <p>Dragonborn look very much like dragons standing erect in humanoid form, though they lack wings or a tail.</p>
             <p>Racial Traits: Draconic Ancestry, Breath Weapon, Damage Resistance</p>
@@ -59,4 +59,4 @@ function Elf(props) {
     ) : "";
 }
 
-export default Elf
+export default Wizard

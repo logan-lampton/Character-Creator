@@ -111,11 +111,10 @@ p {
 
 .popup {
   position: relative;
-  top: 0;
+  top: 0px;
   left: 0;
-  height: 100vh;
   width: 100%;
-  background-color: rgb(17, 16, 16, 0.5);
+  background-color: rgb(6, 6, 6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,6 +126,7 @@ p {
   padding: 32px;
   width: 100%;
   max-width: 640px;
+  line-height:22px;
   background-color: whitesmoke;
 }
 
