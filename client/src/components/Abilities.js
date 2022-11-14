@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom'
 
-function Abilities() {
+function Abilities({onAddAbility, currentUser}) {
 
     const [formData, setFormData] = useState({
         strength:'',
@@ -19,26 +19,28 @@ function Abilities() {
     const {strength, dexterity, constitution, intelligence, wisdom, charisma} = formData
 
     //handling creating the user variable to reflect the info
-    function onSubmit(e) {
+    function handleAddAbility(e) {
         e.preventDefault()
-        const abilityScores = {
-            strength, dexterity, constitution, intelligence, wisdom, charisma
-        }
-
-    //     //the fetch that will POST the new user to the backend
-    //     // fetch('/character_details', {
-    //     //     method:'POST',
-    //     //     headers:{'Content-Type': 'application/json'},
-    //     //     body:JSON.stringify(characterDetails)
-    //     // })
-    //     // .then(res => res.json())
-    //     // .then(characterDetails => {
-    //     //     updateCharacter(characterDetails)
-    //     //     history.push(`/character_details/${character.id}`)
-    //     // })
-    //     // }else {
-    //     //     res.json().then(json => setErrors(this.entries(json.errors)))
-    //     // }
+        // const abilityScores = {
+        //     strength, dexterity, constitution, intelligence, wisdom, charisma
+        // }
+        fetch("/abilities", {
+            method: "POST",
+            headers : {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                strength: e.target.strength.value,
+                dexterity: e.target.dexterity.value,
+                constitution: e.target.constitution.value,
+                intelligence: e.target.intelligence.value,
+                wisdom: e.target.wisdom.value,
+                charisma: e.target.charisma.value,
+                user_id: currentUser
+            })
+        })
+        .then(response => response.json())
+        .then(newAbility => onAddAbility(newAbility))
     }
 
     //telling the app to update the form to reflect what the user types into the physical space
@@ -53,7 +55,7 @@ function Abilities() {
             <div className='intro'>
                 <h1>Ability Scores</h1>
                 <p>Please select your ability scores below</p>
-                <form className="form" onSubmit={onSubmit}>
+                <form className="form" onSubmit={handleAddAbility}>
                 <label>Strength</label>
                     <input type="number" name="strength" placeholder="enter strength value" value={strength} onChange={handleChange} />
                 <label>Dexterity</label>

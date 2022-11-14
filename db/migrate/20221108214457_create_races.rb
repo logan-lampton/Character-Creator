@@ -3,6 +3,7 @@ class CreateRaces < ActiveRecord::Migration[7.0]
     create_table :races do |t|
       t.string :name
       t.integer :character_id
+      t.integer :user_id
       
       t.timestamps
     end

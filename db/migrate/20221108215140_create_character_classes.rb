@@ -3,6 +3,7 @@ class CreateCharacterClasses < ActiveRecord::Migration[7.0]
     create_table :character_classes do |t|
       t.string :name
       t.integer :character_id
+      t.integer :user_id
 
       t.timestamps
     end

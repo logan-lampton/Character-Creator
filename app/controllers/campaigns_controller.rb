@@ -18,7 +18,7 @@ end
 
 # POST /campaigns
 def create
-    campaign = Campaign.create!(campaign_params)
+    campaign = Campaign.create(campaign_params)
     if campaign.valid?
         render json: campaign, status: :created
     else
@@ -28,7 +28,7 @@ end
 
 # PATCH /campaigns/:id
 def update
-    campaign = Campaign.find(params[:id])
+    campaign = Campaign.find_by(id: params[:id])
     if campaign
         campaign.update(campaign_params)
             if campaign.valid?

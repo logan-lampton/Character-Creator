@@ -23,6 +23,7 @@ function App() {
   const [abilities, setAbilities] = useState([])
   const [characterClasses, setCharacterClasses] = useState([])
   const [descriptions, setDescriptions] = useState([])
+  console.log("descriptions: ", descriptions)
   const [races, setRaces] = useState([])
 
   // const [campaigns, setCampaigns] = useState([])
@@ -242,7 +243,7 @@ function App() {
       {!currentUser ? <Link to="/"><h1>Please sign in or register</h1></Link> :
       <Switch>
           <Route exact path="/home">
-            <Home onAddCharacter={handleAddCharacter} />
+            <Home onAddCharacter={handleAddCharacter} currentUser={currentUser} />
           </Route>
           <Route exact path="/races">
             <Race onAddRace={handleAddRace} />
