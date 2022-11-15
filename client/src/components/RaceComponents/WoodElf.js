@@ -3,6 +3,11 @@ import Select from 'react-select';
 
 function WoodElf(props) {
 
+    const handleClick = (e) => {
+        props.handleAddRace(e)
+        props.setTrigger(false)
+    }
+
     const draconicAncestory = [
         {value: "black", label: "Black Dragon"},
         {value: "blue", label: "Blue Dragon"},
@@ -51,7 +56,7 @@ function WoodElf(props) {
                     </p>:null
                 }
             <br></br>
-            <button className="select-btn" onClick={() => props.setTrigger(false)}>select</button>
+            <button name="Wood Elf" className="select-btn" onClick={(e) => handleClick(e)}>select</button>
             {/* refactor the select-btn onClick to add the race info to the database */}
         </div>
     </div>
