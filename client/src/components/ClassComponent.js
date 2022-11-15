@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
+import { CharContext } from "../App";
 import Barbarian from "./ClassComponents/Barbarian";
 import Bard from "./ClassComponents/Bard";
 import Cleric from "./ClassComponents/Cleric";
@@ -13,7 +14,7 @@ import Warlock from "./ClassComponents/Warlock";
 import Wizard from "./ClassComponents/Wizard";
 
 export default function ClassComponent() {
-    
+    const currentChar = useContext(CharContext)
     const [showBarbarianPopup, setShowBarbarianPopup] = useState(false);
     const [showBardPopup, setShowBardPopup] = useState(false);
     const [showClericPopup, setShowClericPopup] = useState(false);

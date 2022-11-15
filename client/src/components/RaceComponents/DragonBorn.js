@@ -20,6 +20,11 @@ function DragonBorn(props) {
     const [showBreathWeapon, setShowBreathWeapon] = useState(false)
     const [showDamageResistance, setShowDamageResistance] = useState(false)
 
+    const handleClick = (e) => {
+        props.handleAddRace(e)
+        props.setTrigger(false)
+    }
+
 
     return (props.trigger) ? (
     <>
@@ -51,7 +56,7 @@ function DragonBorn(props) {
                     </p>:null
                 }
             <br></br>
-            <button className="select-btn" onClick={() => props.setTrigger(false)}>select</button>
+            <button name="Dragonborn" className="select-btn" onClick={(e) => handleClick(e)}>select</button>
             {/* refactor the select-btn onClick to add the race info to the database */}
         </div>
     </div>

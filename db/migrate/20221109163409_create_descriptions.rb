@@ -21,7 +21,6 @@ class CreateDescriptions < ActiveRecord::Migration[7.0]
       t.string :backstory
       t.string :other
       t.integer :character_id
-      t.integer :user_id
 
       t.timestamps
     end

@@ -5,6 +5,7 @@ function Home({onAddCharacter, currentUser}) {
     
     function handleAddCharacter(event){
         event.preventDefault()
+
         fetch("/characters", {
             method: "POST",
             headers: {
@@ -13,8 +14,8 @@ function Home({onAddCharacter, currentUser}) {
             body: JSON.stringify({
                 name: event.target.name.value,
                 image: event.target.image.value,
-                user_id: currentUser,
-                campaign_id: event.target.value
+                user_id: currentUser.id,
+                campaign_id: event.target.campaign.value
             })
         })
         .then(response => response.json())
@@ -29,10 +30,10 @@ function Home({onAddCharacter, currentUser}) {
                 <input type="text" name="name" placeholder="Insert name" className="form"/>
                 <input type="text" name="image" placeholder="Insert image" className="form"/>
                 <p>Select the campaign that you'll play in</p>
-                <select>
-                    <option value="campaign_id">Ghosts of Saltmarsh</option>
-                    <option value="campaign_id">Ascent into Avernus</option>
-                    <option value="campaign_id">Wild Beyond the Witchlight</option>
+                <select name="campaign">
+                    <option value="1">Ghosts of Saltmarsh</option>
+                    <option value="2">Ascent into Avernus</option>
+                    <option value="3">Wild Beyond the Witchlight</option>
                 </select>
                 <button type="submit">Submit</button>
             </form>

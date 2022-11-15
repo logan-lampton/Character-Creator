@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Link, useParams } from "react-router-dom";
 
 import Abilities from './components/Abilities';
@@ -12,25 +12,24 @@ import Navbar from "./components/Navbar";
 import Race from './components/Race';
 import Register from "./components/Register";
 import YourCharacters from './components/YourCharacters';
+export const CharContext = React.createContext()
 
 function App() {
   //user useState
+  const storedChar = localStorage.getItem('currentChar')
   const [currentUser, setCurrentUser] = useState(false)
-  console.log("current user?: ", currentUser)
-
+  const [currentChar, setCurrentChar] = useState(JSON.parse(storedChar))  
   const [characters, setCharacters] = useState([])
-  console.log("characters: ", characters)
   const [abilities, setAbilities] = useState([])
   const [characterClasses, setCharacterClasses] = useState([])
   const [descriptions, setDescriptions] = useState([])
-  console.log("descriptions: ", descriptions)
   const [races, setRaces] = useState([])
 
   // const [campaigns, setCampaigns] = useState([])
   // const params = useParams()
 
   useEffect(() => {
-    fetch('/users')
+    fetch('/authorized_user')
     .then(res => {
       if(res.ok){
         res.json()
@@ -51,6 +50,8 @@ function App() {
   }, [])
 
   function handleAddCharacter(newCharacter){
+    localStorage.setItem("currentChar", JSON.stringify(newCharacter))
+    setCurrentChar(newCharacter)
     const newCharacterArray = [...characters, newCharacter]
     setCharacters(newCharacterArray) //update once you add filters, if you do
   }
@@ -245,18 +246,20 @@ function App() {
           <Route exact path="/home">
             <Home onAddCharacter={handleAddCharacter} currentUser={currentUser} />
           </Route>
-          <Route exact path="/races">
-            <Race onAddRace={handleAddRace} />
-          </Route>
-          <Route exact path="/classes">
-            <ClassComponent onAddCharacterClass={handleAddCharacterClass} />
-          </Route>
-          <Route exact path="/ablities">
-            <Abilities onAddAbility={handleAddAbility} />
-          </Route>
-          <Route exact path="/descriptions">
-            <Description onAddDescription={handleAddDescription}/>
-          </Route>
+          <CharContext.Provider value={currentChar}>
+            <Route exact path="/races">
+              <Race onAddRace={handleAddRace} />
+            </Route>
+            <Route exact path="/classes">
+              <ClassComponent onAddCharacterClass={handleAddCharacterClass} />
+            </Route>
+            <Route exact path="/ablities">
+              <Abilities onAddAbility={handleAddAbility} />
+            </Route>
+            <Route exact path="/descriptions">
+              <Description onAddDescription={handleAddDescription}/>
+            </Route>
+          </CharContext.Provider>
           {/* <Route exact path="/campaigns">
             <Campaign 
             onAddCampaign={handleAddCampaign}

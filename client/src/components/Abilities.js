@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {useHistory} from 'react-router-dom'
+import { CharContext } from '../App';
 
-function Abilities({onAddAbility, currentUser}) {
-
+function Abilities({onAddAbility}) {
+    const currentChar = useContext(CharContext)
     const [formData, setFormData] = useState({
         strength:'',
         dexterity:'',
@@ -36,7 +37,7 @@ function Abilities({onAddAbility, currentUser}) {
                 intelligence: e.target.intelligence.value,
                 wisdom: e.target.wisdom.value,
                 charisma: e.target.charisma.value,
-                user_id: currentUser
+                character_id: currentChar.id
             })
         })
         .then(response => response.json())

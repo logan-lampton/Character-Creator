@@ -25,7 +25,7 @@ function DCharacterDetails() {
             lifestyle
         }
 
-    //     //the fetch that will POST the new user to the backend
+    //the fetch that will POST the new user to the backend
     //     // fetch('/character_details', {
     //     //     method:'POST',
     //     //     headers:{'Content-Type': 'application/json'},

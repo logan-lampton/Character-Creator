@@ -55,7 +55,7 @@ end
 private
 
 def ability_params
-    params.permit(:strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :character_id, :user_id)
+    params.permit(:strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :character_id)
 end
 
 end

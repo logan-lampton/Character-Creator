@@ -179,3 +179,14 @@ a:link {
 .card__image {
   max-width: 150px
 }
+
+.characterDetails label,
+.physicalCharacteristics label,
+.personalityTraits label,
+.notes label {
+  display: block;
+}
+
+.background {
+  height: 40px;
+}

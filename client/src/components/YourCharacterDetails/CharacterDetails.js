@@ -4,6 +4,12 @@ function CharacterDetails({user, character, onUpdateCharacter, onDeleteCharacter
 
     const {name, image, campaign_id, user_id} = character
 
+    // function userCharacterDetails(user){
+        
+    // }
+
+    console.log("character.user_id: ", character)
+
     return (
         <>
             <div className="card">

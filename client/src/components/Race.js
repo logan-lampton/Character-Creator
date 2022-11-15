@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import React, { useContext, useState } from 'react';
 import DragonBorn from './RaceComponents/DragonBorn';
 import HillDwarf from './RaceComponents/HillDwarf';
 import MountainDwarf from './RaceComponents/MountainDwarf';
@@ -12,9 +11,10 @@ import LightfootHalfling from './RaceComponents/LightfootHalfling';
 import StoutHalfling from './RaceComponents/StoutHalfling'
 import Human from './RaceComponents/Human';
 import Tiefling from './RaceComponents/Tiefling';
+import { CharContext } from '../App';
 
 export default function Race() {
-    
+    const currentChar = useContext(CharContext)
     const [dragonbornPopup, setDragonbornPopup] = useState(false);
     const [hillDwarfPopup, setHillDwarfPopup] = useState(false)
     const [mountainDwarfPopup, setMountainDwarfPopup] = useState(false)
@@ -36,12 +36,11 @@ export default function Race() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: event.target.name.value,
+                character_id: currentChar.id,
+                name: event.target.name,
             })
         })
         .then(response => response.json())
-    //     // .then(newCharacterRace => onAddCharacterRace(newCharacterRace))
-    //     //create and import onAddCharacterRace
     }
     
     return (
@@ -50,29 +49,29 @@ export default function Race() {
                 <h1>Race</h1>
                 <p>Choose your race below:</p>
                 <button onClick={() => setDragonbornPopup(true)}>Dragonborn</button>
-                    <DragonBorn trigger={dragonbornPopup} setTrigger={setDragonbornPopup}></DragonBorn>
+                    <DragonBorn handleAddRace={handleAddRace} trigger={dragonbornPopup} setTrigger={setDragonbornPopup}></DragonBorn>
                 <button onClick={() => setHillDwarfPopup(true)}>Hill Dwarf</button>
-                    <HillDwarf trigger={hillDwarfPopup} setTrigger={setHillDwarfPopup}></HillDwarf>
+                    <HillDwarf handleAddRace={handleAddRace} trigger={hillDwarfPopup} setTrigger={setHillDwarfPopup}></HillDwarf>
                 <button onClick={() => setMountainDwarfPopup(true)}>Mountain Dwarf</button>
-                    <MountainDwarf trigger={mountainDwarfPopup} setTrigger={setMountainDwarfPopup}></MountainDwarf>
+                    <MountainDwarf handleAddRace={handleAddRace} trigger={mountainDwarfPopup} setTrigger={setMountainDwarfPopup}></MountainDwarf>
                 <button onClick={() => setHighElfPopup(true)}>High Elf</button>
-                    <HighElf trigger={highElfPopup} setTrigger={setHighElfPopup}></HighElf>
+                    <HighElf handleAddRace={handleAddRace} trigger={highElfPopup} setTrigger={setHighElfPopup}></HighElf>
                 <button onClick={() => setWoodElfPopup(true)}>Wood Elf</button>
-                    <WoodElf trigger={woodElfPopup} setTrigger={setWoodElfPopup}></WoodElf>
+                    <WoodElf handleAddRace={handleAddRace} trigger={woodElfPopup} setTrigger={setWoodElfPopup}></WoodElf>
                 <button onClick={() => setGnomePopup(true)}>Gnome</button>
-                    <Gnome trigger={gnomePopup} setTrigger={setGnomePopup}></Gnome>
+                    <Gnome handleAddRace={handleAddRace} trigger={gnomePopup} setTrigger={setGnomePopup}></Gnome>
                 <button onClick={() => setHalfElfPopup(true)}>Half-Elf</button>
-                    <HalfElf trigger={halfElfPopup} setTrigger={setHalfElfPopup}></HalfElf>
+                    <HalfElf handleAddRace={handleAddRace} trigger={halfElfPopup} setTrigger={setHalfElfPopup}></HalfElf>
                 <button onClick={() => setHalfOrcPopup(true)}>Half-Orc</button>
-                    <HalfOrc trigger={halfOrcPopup} setTrigger={setHalfOrcPopup}></HalfOrc>
+                    <HalfOrc handleAddRace={handleAddRace} trigger={halfOrcPopup} setTrigger={setHalfOrcPopup}></HalfOrc>
                 <button onClick={() => setLightfootHalflingPopup(true)}>Lightfoot Halfling</button>
-                    <LightfootHalfling trigger={lightfootHalflingPopup} setTrigger={setLightfootHalflingPopup}></LightfootHalfling>
+                    <LightfootHalfling handleAddRace={handleAddRace} trigger={lightfootHalflingPopup} setTrigger={setLightfootHalflingPopup}></LightfootHalfling>
                 <button onClick={() => setStoutHalflingPopup(true)}>Stout Halfling</button>
-                    <StoutHalfling trigger={stoutHalflingPopup} setTrigger={setStoutHalflingPopup}></StoutHalfling>
+                    <StoutHalfling handleAddRace={handleAddRace} trigger={stoutHalflingPopup} setTrigger={setStoutHalflingPopup}></StoutHalfling>
                 <button onClick={() => setHumanPopup(true)}>Human</button>
-                    <Human trigger={humanPopup} setTrigger={setHumanPopup}></Human>
+                    <Human handleAddRace={handleAddRace} trigger={humanPopup} setTrigger={setHumanPopup}></Human>
                 <button onClick={() => setTieflingPopup(true)}>Tiefling</button>
-                    <Tiefling trigger={tieflingPopup} setTrigger={setTieflingPopup}></Tiefling>
+                    <Tiefling handleAddRace={handleAddRace} trigger={tieflingPopup} setTrigger={setTieflingPopup}></Tiefling>
             </div> 
         </>
     );

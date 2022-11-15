@@ -5,7 +5,6 @@ class CreateCharacterDetails < ActiveRecord::Migration[7.0]
       t.string :faith
       t.string :lifestyle
       t.integer :character_id
-      t.integer :user_id
 
       t.timestamps
     end

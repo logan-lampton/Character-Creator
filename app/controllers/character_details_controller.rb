@@ -55,7 +55,7 @@ end
 private
 
 def character_detail_params
-    params.permit(:alignment, :faith, :lifestyle, :character_id, :user_id)
+    params.permit(:alignment, :faith, :lifestyle, :character_id)
 end
 
 end

@@ -55,7 +55,7 @@ end
 private
 
 def race_params
-    params.permit(:name, :character_id, :user_id)
+    params.permit(:name, :character_id)
 end
 
 end

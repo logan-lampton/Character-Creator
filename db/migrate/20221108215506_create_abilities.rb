@@ -8,8 +8,7 @@ class CreateAbilities < ActiveRecord::Migration[7.0]
       t.integer :wisdom
       t.integer :charisma
       t.integer :character_id
-      t.integer :user_id
-
+      
       t.timestamps
     end
   end

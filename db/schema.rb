@@ -22,7 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_174434) do
     t.integer "wisdom"
     t.integer "charisma"
     t.integer "character_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,7 +29,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_174434) do
   create_table "campaigns", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,7 +36,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_174434) do
   create_table "character_classes", force: :cascade do |t|
     t.string "name"
     t.integer "character_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,7 +45,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_174434) do
     t.string "faith"
     t.string "lifestyle"
     t.integer "character_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -83,7 +79,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_174434) do
     t.string "backstory"
     t.string "other"
     t.integer "character_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -91,7 +86,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_174434) do
   create_table "races", force: :cascade do |t|
     t.string "name"
     t.integer "character_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
