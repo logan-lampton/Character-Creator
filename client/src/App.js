@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar";
 import Race from './components/Race';
 import Register from "./components/Register";
 import YourCharacters from './components/YourCharacters';
+import CharacterDetails from './components/CharacterDetails'
 export const CharContext = React.createContext()
 
 function App() {
