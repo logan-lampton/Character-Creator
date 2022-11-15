@@ -8,8 +8,6 @@ function CharacterDetails({user, character, onUpdateCharacter, onDeleteCharacter
         
     // }
 
-    console.log("character.user_id: ", character)
-
     return (
         <>
             <div className="card">

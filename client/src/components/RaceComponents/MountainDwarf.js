@@ -20,6 +20,10 @@ function MountainDwarf(props) {
     const [showBreathWeapon, setShowBreathWeapon] = useState(false)
     const [showDamageResistance, setShowDamageResistance] = useState(false)
 
+    const handleClick = (e) => {
+        props.handleAddRace(e)
+        props.setTrigger(false)
+    }
 
     return (props.trigger) ? (
     <>
@@ -51,8 +55,7 @@ function MountainDwarf(props) {
                     </p>:null
                 }
             <br></br>
-            <button className="select-btn" onClick={() => props.setTrigger(false)}>select</button>
-            {/* refactor the select-btn onClick to add the race info to the database */}
+            <button name="Mountain Dwarf" className="select-btn" onClick={(e) => handleClick(e)}>select</button>
         </div>
     </div>
     </>

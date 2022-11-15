@@ -18,13 +18,15 @@ function App() {
   //user useState
   const storedChar = localStorage.getItem('currentChar')
   const [currentUser, setCurrentUser] = useState(false)
-  const [currentChar, setCurrentChar] = useState(JSON.parse(storedChar))  
+  const [currentChar, setCurrentChar] = useState(null)  
   const [characters, setCharacters] = useState([])
   const [abilities, setAbilities] = useState([])
   const [characterClasses, setCharacterClasses] = useState([])
   const [descriptions, setDescriptions] = useState([])
   const [races, setRaces] = useState([])
 
+  console.log("currentUser", currentUser)
+  console.log("currentChar", currentChar)
   // const [campaigns, setCampaigns] = useState([])
   // const params = useParams()
 
@@ -259,36 +261,27 @@ function App() {
             <Route exact path="/descriptions">
               <Description onAddDescription={handleAddDescription}/>
             </Route>
+            <Route exact path="/characters">
+              <YourCharacters
+              user={currentUser}
+              characters={characters}
+              onUpdateCharacter={handleUpdateCharacter}
+              onDeleteCharacter={handleDeleteCharacter}
+              abilities={abilities}
+              onUpdateAbilities={handleUpdateAbilities}
+              onDeleteAbility={handleDeleteAbility}
+              characterClasses={characterClasses}
+              onUpdateCharacterClass={handleUpdateCharacterClass}
+              onDeleteCharacterClass={handleDeleteCharacterClass}
+              descriptions={descriptions}
+              onUpdateDescription={handleUpdateDescription}
+              onDeleteDescription={handleDeleteDescription}
+              races={races}
+              onUpdateRace={handleUpdateRace}
+              onDeleteRace={handleDeleteRace}
+              />
+            </Route>
           </CharContext.Provider>
-          {/* <Route exact path="/campaigns">
-            <Campaign 
-            onAddCampaign={handleAddCampaign}
-            user={currentUser}
-            onUpdateCampaign={handleUpdateCampaign}
-            onDeleteCampaign={handleDeleteCampaign}
-            campaigns={campaigns}
-            /> */}
-          {/* </Route> */}
-          <Route exact path="/characters">
-            <YourCharacters
-            user={currentUser}
-            characters={characters}
-            onUpdateCharacter={handleUpdateCharacter}
-            onDeleteCharacter={handleDeleteCharacter}
-            abilities={abilities}
-            onUpdateAbilities={handleUpdateAbilities}
-            onDeleteAbility={handleDeleteAbility}
-            characterClasses={characterClasses}
-            onUpdateCharacterClass={handleUpdateCharacterClass}
-            onDeleteCharacterClass={handleDeleteCharacterClass}
-            descriptions={descriptions}
-            onUpdateDescription={handleUpdateDescription}
-            onDeleteDescription={handleDeleteDescription}
-            races={races}
-            onUpdateRace={handleUpdateRace}
-            onDeleteRace={handleDeleteRace}
-            />
-          </Route>
           <Route exact path="/users/:id">
             <h1>Welcome {currentUser.name}</h1>
           </Route>
@@ -304,3 +297,14 @@ function App() {
 }
 
 export default App;
+
+
+          {/* <Route exact path="/campaigns">
+            <Campaign 
+            onAddCampaign={handleAddCampaign}
+            user={currentUser}
+            onUpdateCampaign={handleUpdateCampaign}
+            onDeleteCampaign={handleDeleteCampaign}
+            campaigns={campaigns}
+            /> */}
+          {/* </Route> */}

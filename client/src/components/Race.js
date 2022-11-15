@@ -28,6 +28,8 @@ export default function Race() {
     const [humanPopup, setHumanPopup] = useState(false);
     const [tieflingPopup, setTieflingPopup] = useState(false);
 
+    console.log("currentChar", currentChar)
+
     function handleAddRace(event){
         event.preventDefault()
         fetch("/races", {

@@ -28,6 +28,8 @@ export default function ClassComponent() {
     const [showWarlockPopup, setShowWarlockPopup] = useState(false);
     const [showWizardPopup, setShowWizardPopup] = useState(false);
     
+    console.log("currentChar", currentChar)
+
     return (
         <>
         <div className='buttonList'>

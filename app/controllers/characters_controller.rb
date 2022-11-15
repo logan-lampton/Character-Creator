@@ -2,8 +2,19 @@ class CharactersController < ApplicationController
 
  # GET /characters
  def index
-    characters = Character.all
-    render json: characters, status: :ok
+    characters = Character.where(user_id: current_user.id)
+    full_characters = characters.map do |character|
+        full_character = {
+            character: character,
+            race: character.races[0],
+            description: character.descriptions[0],
+            abilities: character.abilities[0],
+            class: character.character_classes[0]
+        }
+        full_character
+    end
+
+    render json: full_characters, status: :ok
 end
 
 # GET /characters/:id

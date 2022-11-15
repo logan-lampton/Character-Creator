@@ -171,9 +171,10 @@ a:link {
 }
 
 .card {
-  padding: 32px;
-  max-width: 640px;
-  display: grid;
+  padding: 20px;
+  align-items: center;
+
+  /* max-width: 640px; */
 }
 
 .card__image {

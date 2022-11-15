@@ -4,6 +4,7 @@ import { CharContext } from '../App';
 
 function Abilities({onAddAbility}) {
     const currentChar = useContext(CharContext)
+    console.log("currentChar", currentChar)
     const [formData, setFormData] = useState({
         strength:'',
         dexterity:'',
