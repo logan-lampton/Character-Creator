@@ -55,7 +55,7 @@ export default function YourCharacters({user, characters, onUpdateCharacter, onD
     return (
         <div className="cards">
             {characters.map((character)=>(
-                <div>
+                <div className="individual_card">
                     <div className="card">
                         <img
                             src={character.character.image}
@@ -71,14 +71,22 @@ export default function YourCharacters({user, characters, onUpdateCharacter, onD
                             <p>Campaign: {character.character.campaign_id}</p>
                             <p>Race: {character.race.name}</p>
                             <p>Class: {character.class.name}</p>
+                        </div>
+                        <div className="card__title">
                             <h3>Ability Scores:</h3>
+                        </div>
+                        <div className="card_details">
                             <p>Strength: {character.abilities.strength}</p>
                             <p>Dexterity: {character.abilities.dexterity}</p>
                             <p>Constitution: {character.abilities.constitution}</p>
                             <p>Intelligence: {character.abilities.intelligence}</p>
                             <p>Wisdom: {character.abilities.wisdom}</p>
                             <p>Charisma: {character.abilities.charisma}</p>
-                            <h3>Description</h3>
+                        </div>
+                        <div className="card__title">
+                            <h3>Description:</h3>
+                        </div>
+                        <div className="card_details">
                             <p>Background: {character.description.background}</p>
                             <p>Alignment: {character.description.alignment}</p>
                             <p>Faith: {character.description.faith}</p>
@@ -99,12 +107,12 @@ export default function YourCharacters({user, characters, onUpdateCharacter, onD
                             <p>Backstory: {character.description.backstory}</p>
                             <p>Other: {character.description.other}</p>
                         </div>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <br></br>
                     </div>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
                 </div>
             ))}
         <br></br>
