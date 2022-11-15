@@ -3,6 +3,11 @@ import Select from 'react-select';
 
 function Wizard(props) {
 
+    const handleClick = (e) => {
+        props.handleAddClass(e)
+        props.setTrigger(false)
+    }
+
     const draconicAncestory = [
         {value: "black", label: "Black Dragon"},
         {value: "blue", label: "Blue Dragon"},
@@ -51,8 +56,7 @@ function Wizard(props) {
                     </p>:null
                 }
             <br></br>
-            <button className="select-btn" onClick={() => props.setTrigger(false)}>select</button>
-            {/* refactor the select-btn onClick to add the race info to the database */}
+            <button name="Wizard" className="select-btn" onClick={(e) => handleClick(e)}>select</button>
         </div>
     </div>
     </>

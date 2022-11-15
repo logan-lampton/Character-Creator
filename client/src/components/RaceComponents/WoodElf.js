@@ -57,7 +57,6 @@ function WoodElf(props) {
                 }
             <br></br>
             <button name="Wood Elf" className="select-btn" onClick={(e) => handleClick(e)}>select</button>
-            {/* refactor the select-btn onClick to add the race info to the database */}
         </div>
     </div>
     </>

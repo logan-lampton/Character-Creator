@@ -30,35 +30,50 @@ export default function ClassComponent() {
     
     console.log("currentChar", currentChar)
 
+    function handleAddClass(event){
+        event.preventDefault()
+        fetch("/character_classes", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                character_id: currentChar.id,
+                name: event.target.name,
+            })
+        })
+        .then(response => response.json())
+    }
+
     return (
         <>
         <div className='buttonList'>
             <h1>Class</h1>
             <p>Choose your class below:</p>
             <button onClick={() => setShowBarbarianPopup(true)}>Barbarian</button>
-                <Barbarian trigger={showBarbarianPopup} setTrigger={setShowBarbarianPopup}></Barbarian>
+                <Barbarian handleAddClass={handleAddClass} trigger={showBarbarianPopup} setTrigger={setShowBarbarianPopup}></Barbarian>
             <button onClick={() => setShowBardPopup(true)}>Bard</button>
-                <Bard trigger={showBardPopup} setTrigger={setShowBardPopup}></Bard>
+                <Bard handleAddClass={handleAddClass} trigger={showBardPopup} setTrigger={setShowBardPopup}></Bard>
             <button onClick={() => setShowClericPopup(true)}>Cleric</button>
-                <Cleric trigger={showClericPopup} setTrigger={setShowClericPopup}></Cleric>
+                <Cleric handleAddClass={handleAddClass} trigger={showClericPopup} setTrigger={setShowClericPopup}></Cleric>
             <button onClick={() => setShowDruidPopup(true)}>Druid</button>
-                <Druid trigger={showDruidPopup} setTrigger={setShowDruidPopup}></Druid>
+                <Druid handleAddClass={handleAddClass} trigger={showDruidPopup} setTrigger={setShowDruidPopup}></Druid>
             <button onClick={() => setShowFighterPopup(true)}>Fighter</button>
-                <Fighter trigger={showFighterPopup} setTrigger={setShowFighterPopup}></Fighter>
+                <Fighter handleAddClass={handleAddClass} trigger={showFighterPopup} setTrigger={setShowFighterPopup}></Fighter>
             <button onClick={() => setShowMonkPopup(true)}>Monk</button>
-                <Monk trigger={showMonkPopup} setTrigger={setShowMonkPopup}></Monk>
+                <Monk handleAddClass={handleAddClass} trigger={showMonkPopup} setTrigger={setShowMonkPopup}></Monk>
             <button onClick={() => setShowPaladinPopup(true)}>Paladin</button>
-                <Paladin trigger={showPaladinPopup} setTrigger={setShowPaladinPopup}></Paladin>
+                <Paladin handleAddClass={handleAddClass} trigger={showPaladinPopup} setTrigger={setShowPaladinPopup}></Paladin>
             <button onClick={() => setShowRangerPopup(true)}>Ranger</button>
-                <Ranger trigger={showRangerPopup} setTrigger={setShowRangerPopup}></Ranger>
+                <Ranger handleAddClass={handleAddClass} trigger={showRangerPopup} setTrigger={setShowRangerPopup}></Ranger>
             <button onClick={() => setShowRoguePopup(true)}>Rogue</button>
-                <Rogue trigger={showRoguePopup} setTrigger={setShowRoguePopup}></Rogue>
+                <Rogue handleAddClass={handleAddClass} trigger={showRoguePopup} setTrigger={setShowRoguePopup}></Rogue>
             <button onClick={() => setShowSorcererPopup(true)}>Sorcerer</button>
-                <Sorcerer trigger={showSorcererPopup} setTrigger={setShowSorcererPopup}></Sorcerer>
+                <Sorcerer handleAddClass={handleAddClass} trigger={showSorcererPopup} setTrigger={setShowSorcererPopup}></Sorcerer>
             <button onClick={() => setShowWarlockPopup(true)}>Warlock</button>
-                <Warlock trigger={showWarlockPopup} setTrigger={setShowWarlockPopup}></Warlock>
+                <Warlock handleAddClass={handleAddClass} trigger={showWarlockPopup} setTrigger={setShowWarlockPopup}></Warlock>
             <button onClick={() => setShowWizardPopup(true)}>Wizard</button>
-                <Wizard trigger={showWizardPopup} setTrigger={setShowWizardPopup}></Wizard>
+                <Wizard handleAddClass={handleAddClass} trigger={showWizardPopup} setTrigger={setShowWizardPopup}></Wizard>
         </div> 
     </> 
     );
