@@ -70,4 +70,5 @@ def character_params
     params.permit(:name, :image, :user_id, :campaign_id)
 end
 
+# , description: []
 end

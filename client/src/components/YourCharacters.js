@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CharacterDetails from "./CharacterDetails"
 import AbilitiesDetails from "./YourCharacterDetails/AbilitiesDetails"
 import CharacterClassDetails from "./YourCharacterDetails/CharacterClassDetails"
@@ -8,6 +8,39 @@ import RaceDetails from "./YourCharacterDetails/RaceDetails"
 export default function YourCharacters({user, characters, onUpdateCharacter, onDeleteCharacter, abilities, onUpdateAbilities, onDeleteAbility, characterClasses, onUpdateCharacterClass, onDeleteCharacterClass, descriptions, onUpdateDescription, onDeleteDescription, races, onUpdateRace, onDeleteRace}) {
     console.log("full characters: ", characters)
 
+    const [charState, setCharState] = useState([])
+
+    function handleDeleteCharacter(character_id) {
+        fetch(`/characters/${character_id}`, {
+            method: "DELETE",
+        })
+        .then((res) => {
+            return res.json()
+        }).then(() => {
+            const filteredChars = characters.filter((char) => char.character_id !== character_id);
+            setCharState(filteredChars)
+        })
+    }
+
+    // function handleCharacterUpdate(event){
+    //     event.preventDefault()
+    //     fetch(`/characters/${id}`, {
+    //       method: "PATCH",
+    //       headers: {
+    //           'Content-Type': 'application/json'
+    //       },
+    //       body: JSON.stringify({
+    //           name: event.target.name.value,
+    //           image: event.target.image.value,
+    //           campaign_id: event.target.campaign.value,
+    // //       })
+    // //     })
+    // //     .then(response => response.json())
+    // //     .then(updatedCostume => {
+    // //       onUpdateCostume(updatedCostume)
+    // //     })
+    // //   }
+
     // const characterComponents = characters.map(character => {
     //     return(
     //       <CharacterDetails
@@ -16,13 +49,6 @@ export default function YourCharacters({user, characters, onUpdateCharacter, onD
     //       />
     //     )
     //   })
-
-    // function handleDeleteClick(){
-    //     fetch(`/characters/${id}`, {
-    //       method: "DELETE"
-    //     })
-    //     onDeleteCharacter(id);
-    //   }
 
     // const abilitiesComponents = abilities.map(ability => {
     //     return(
@@ -115,7 +141,19 @@ export default function YourCharacters({user, characters, onUpdateCharacter, onD
                         <p>Backstory: {character.description.backstory}</p>
                         <p>Other: {character.description.other}</p>
                     </div>
-                    <button>Delete Character</button>
+                    <br></br>
+                    <div>
+                        <h3>Update Character Details</h3>
+                    <form>
+                        <input type="text" name="name" placeholder="Name" className="form"/>
+                        <input type="integer" name="price" placeholder="Price" className="form" />
+                        <input type="text" name="image" placeholder="Image" className="form" />
+                        <input type="text" name="description" placeholder="description" className="form" />
+                        <input type="text" name="link" placeholder="Link" className="form" />
+                        <button type="submit" className="form">Update details</button>
+                    </form>
+                    </div>
+                    <button onClick={() => { console.log(character); handleDeleteCharacter(character.character.id) }}>Delete Character</button>
                 </div>
                     <br></br>
                     <br></br>

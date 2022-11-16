@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar";
 import Race from './components/Race';
 import Register from "./components/Register";
 import YourCharacters from './components/YourCharacters';
+import YourAccount from './components/YourCampaign';
 import CharacterDetails from './components/CharacterDetails'
 export const CharContext = React.createContext()
 
@@ -25,6 +26,7 @@ function App() {
   const [characterClasses, setCharacterClasses] = useState([])
   const [descriptions, setDescriptions] = useState([])
   const [races, setRaces] = useState([])
+  const [campaigns, setCampaigns] = useState([])
 
   console.log("currentUser", currentUser)
   console.log("currentChar", currentChar)
@@ -206,32 +208,33 @@ function App() {
 
 
   // // /campaigns CRUD below
-  // useEffect(() => {
-  //   fetch("/campaigns")
-  //   .then((res) => res.json())
-  //   .then((campaigns) => setCampaigns(campaigns))
-  // }, [])
 
-  // function handleAddCampaign(newCampaign){
-  //   const newCampaignArray = [...campaigns, newCampaign]
-  //   setCampaigns(newCampaignArray) //update once you add filters, if you do
-  // }
+  useEffect(() => {
+    fetch("/campaigns")
+    .then((res) => res.json())
+    .then((campaigns) => setCampaigns(campaigns))
+  }, [])
 
-  // function handleUpdateCampaign(updatedCampaign) {
-  //   const updatedCampaignArray = campaigns.map((campaign) => {
-  //     if (campaign.id === updatedCampaign.id) {
-  //       return updatedCampaign;
-  //     } else {
-  //       return campaign;
-  //     }
-  //   });
-  //   setCampaigns(updatedCampaignArray)
-  // }
+  function handleAddCampaign(newCampaign){
+    const newCampaignArray = [...campaigns, newCampaign]
+    setCampaigns(newCampaignArray) //update once you add filters, if you do
+  }
 
-  // function handleDeleteCampaign(id) {
-  //   const updatedCampaignArray = campaigns.filter((campaign => campaign.id !== id));
-  //   setCampaigns(updatedCampaignArray)
-  // }
+  function handleUpdateCampaign(updatedCampaign) {
+    const updatedCampaignArray = campaigns.map((campaign) => {
+      if (campaign.id === updatedCampaign.id) {
+        return updatedCampaign;
+      } else {
+        return campaign;
+      }
+    });
+    setCampaigns(updatedCampaignArray)
+  }
+
+  function handleDeleteCampaign(id) {
+    const updatedCampaignArray = campaigns.filter((campaign => campaign.id !== id));
+    setCampaigns(updatedCampaignArray)
+  }
 
   return (
     <>
@@ -283,8 +286,8 @@ function App() {
               />
             </Route>
           </CharContext.Provider>
-          <Route exact path="/users/:id">
-            <h1>Welcome {currentUser.name}</h1>
+          <Route exact path="/users">
+            <YourAccount />
           </Route>
           <Route path="*">
             <h1>404 Error: Sorry we can't find your page</h1>

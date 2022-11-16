@@ -10,6 +10,7 @@ body {
   align-items: stretch;
   gap: 2rem;
   padding: 0 1rem;
+  width: 100;
 }
 
 .nav-bar a {
@@ -191,13 +192,17 @@ a:link {
   margin-left: 300px;
 }
 
-/* .characterDetails label,
+.characterDetails label,
 .physicalCharacteristics label,
 .personalityTraits label,
 .notes label {
   display: block;
-} */
+}
 
 .background {
   height: 40px;
 }
+
+/* h2 {
+  font-size: 25px;
+} */
