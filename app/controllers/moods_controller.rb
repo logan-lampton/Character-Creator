@@ -55,7 +55,7 @@ end
 private
 
 def mood_params
-    params.permit(:mood, :name, :user_id)
+    params.permit(:status, :name, :user_id)
 end
 
 end

@@ -267,15 +267,18 @@ Description.create!([{
 
 puts "Seeding Moods..."
 Mood.create!([{
-    mood: "Looking for a new campaign to play in",
+    status: "Looking for a new campaign to play in",
+    name: "Blake",
     user_id: 1
 },
 {
-    mood: "Game night on Friday was great!",
+    status: "Game night on Friday was great!",
+    name: "Logan",
     user_id: 2
 },
 {
-    mood: "Huzzah!",
+    status: "Huzzah!",
+    name: "Rae",
     user_id: 3
 }])
 

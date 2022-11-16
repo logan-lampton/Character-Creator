@@ -25,7 +25,7 @@ function App() {
   const [characterClasses, setCharacterClasses] = useState([])
   const [descriptions, setDescriptions] = useState([])
   const [races, setRaces] = useState([])
-  const [moods, setMoods] = useState([])
+  // const [moods, setMoods] = useState([])
 
   console.log("currentUser", currentUser)
   console.log("currentChar", currentChar)
@@ -71,10 +71,25 @@ function App() {
     setCharacters(updatedCharacterArray)
   }
 
-  function handleDeleteCharacter(id) {
-    const updatedCharacterArray = characters.filter((character => character.id !== id));
-    setCharacters(updatedCharacterArray)
+  // function handleDeleteCharacter(id) {
+  //   const updatedCharacterArray = characters.filter((character => character.id !== id));
+  //   setCharacters(updatedCharacterArray)
+  // }
+
+  function handleDeleteCharacter(character_id) {
+    fetch(`/characters/${character_id}`, {
+        method: "DELETE",
+    })
+    .then((res) => {
+        console.log(res)
+        return res.json()
+    }).then(() => {
+        const filteredChars = characters.filter((char) => char.character_id !== character_id);
+        console.log(filteredChars)
+        setCharacters(filteredChars)
+    })
   }
+
 
   //end of /characters CRUD
 
@@ -237,17 +252,16 @@ function App() {
 
   // // Mood CRUD
   // useEffect(() => {
-  //   fetch(`/moods`)
+  //   fetch(`/moods`, {
+  //     method: "GET"
+  //   })
   //   .then((res) => res.json())
   //   .then((moods) => setMoods(moods))
   // }, [])
 
   // function handleAddMood(newMood){
   //   const newMoodsArray = [...moods, newMood]
-  //   setMoods(newMoodsArray) //update once you add filters, if you do
-  // }
-
-  // function handleUpdateMood(updatedMood) {
+  //   setMoods(newMo  // function handleUpdateMood(updatedMood) {
   //   const updatedMoodsArray = moods.map((mood) => {
   //     if (mood.id === updatedMood.id) {
   //       return updatedMood;
@@ -261,7 +275,10 @@ function App() {
   // function handleDeleteMood(id) {
   //   const updatedMoodsArray = moods.filter((mood => mood.id !== id));
   //   setMoods(updatedMoodsArray)
+  // }odsArray) //update once you add filters, if you do
   // }
+
+
 //end of Status CRUD
 
 
@@ -314,18 +331,18 @@ function App() {
               onDeleteRace={handleDeleteRace}
               />
             </Route>
-            <Route exact path="/moods">
+            {/* <Route exact path="/mood_crud">
               <MoodCrud />
             </Route>
-            <Route exact path="/moods_components">
-              <MoodComponents
-                // moods={moods}
+            <Route exact path="/moods">
+              <MoodComponents */}
+                {/* // moods={moods}
                 // user={currentUser}
                 // handleAddMood={handleAddMood}
                 // handleUpdateMood={handleUpdateMood}
                 // handleDeleteMood={handleDeleteMood}
               />
-            </Route>
+            </Route> */}
           </CharContext.Provider>
           <Route path="*">
             <h1>404 Error: Sorry we can't find your page</h1>

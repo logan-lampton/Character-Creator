@@ -1,24 +1,35 @@
-import React from "react"
+// import React, { useState, useEffect } from "react"
 // import MoodCrud from "./MoodCrud"
 
-function MoodComponents() {
-    // const moodComponents = moods.map(mood => {
-    //     return (
-    //     <Mood
-    //         key={moodData.id}
-    //         mood={mood}
-    //         user={user}
-    //         handleUpdateMood={handleUpdateMood}
-    //         handleAddMood={handleAddMood}
-    //         handleDeleteMood={handleDeleteMood}
-    //         />
-    //     )
-    // })
-    return(
-        <>
-        {/* {moodComponents} */}
-        </>
-    )
-}
+// function MoodComponents() {
+//     const [moods, setMoods] = useState([]);
+   
+//     useEffect(() => {
+//         fetch("/moods")
+//           .then((r) => r.json())
+//           .then((moods) => {setMoods(moods)});
+//       }, []);
+    
+//     // const options = answers.map((answer, index) => (
+//     //     <option key={index} value={index}>
+//     //       {answer}
+//     //     </option>
+//     //   ));
+//     console.log("Moods in MoodComponents: ", moods)
+   
+//     const moodMap = moods.map((mood) => (
+//         <MoodCrud
+//             key={mood.id}
+//             mood={mood}
+//         />
+//     ))
 
-export default MoodComponents
+//     return(
+//         <>
+//         <h1>Mood Components</h1>
+//         <ul>{moodMap}</ul>
+//         </>
+//     )
+// }
+
+// export default MoodComponents

@@ -84,7 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_145415) do
   end
 
   create_table "moods", force: :cascade do |t|
-    t.string "mood"
+    t.string "status"
     t.string "name"
     t.integer "user_id"
     t.datetime "created_at", null: false

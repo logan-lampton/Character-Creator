@@ -8,19 +8,6 @@ function HillDwarf(props) {
         props.setTrigger(false)
     }
 
-    const draconicAncestory = [
-        {value: "black", label: "Black Dragon"},
-        {value: "blue", label: "Blue Dragon"},
-        {value: "brass", label: "Brass Dragon"},
-        {value: "bronze", label: "Bronze Dragon"},
-        {value: "copper", label: "Copper Dragon"},
-        {value: "gold", label: "Gold Dragon"},
-        {value: "green", label: "Green Dragon"},
-        {value: "red", label: "Red Dragon"},
-        {value: "silver", label: "Silver Dragon"},
-        {value: "white", label: "White Dragon"}
-    ];
-
     const [showDarkVision, setShowDarkVision] = useState(false)
     const [showDwarvenResilience, setShowDwarvenResilience] = useState(false)
     const [showDwarvenCombatTraining, setShowDwarvenCombatTraining] = useState(false)

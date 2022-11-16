@@ -3,22 +3,12 @@ import Select from 'react-select';
 
 function MountainDwarf(props) {
 
-    const draconicAncestory = [
-        {value: "black", label: "Black Dragon"},
-        {value: "blue", label: "Blue Dragon"},
-        {value: "brass", label: "Brass Dragon"},
-        {value: "bronze", label: "Bronze Dragon"},
-        {value: "copper", label: "Copper Dragon"},
-        {value: "gold", label: "Gold Dragon"},
-        {value: "green", label: "Green Dragon"},
-        {value: "red", label: "Red Dragon"},
-        {value: "silver", label: "Silver Dragon"},
-        {value: "white", label: "White Dragon"}
-    ];
-
-    const [showDraconicAncestory, setShowDraconicAncestory] = useState(false)
-    const [showBreathWeapon, setShowBreathWeapon] = useState(false)
-    const [showDamageResistance, setShowDamageResistance] = useState(false)
+    const [showDarkVision, setShowDarkVision] = useState(false)
+    const [showDwarvenResilience, setShowDwarvenResilience] = useState(false)
+    const [showDwarvenCombatTraining, setShowDwarvenCombatTraining] = useState(false)
+    const [showToolProficiency, setShowToolProficiency] = useState(false)
+    const [showStonecunning, setShowStonecunning] = useState(false)
+    const [showDwarvenArmorTraining, setShowDwarvenArmorTraining] = useState(false)
 
     const handleClick = (e) => {
         props.handleAddRace(e)
@@ -32,27 +22,47 @@ function MountainDwarf(props) {
             <button className="close-btn" onClick={() => props.setTrigger(false)}>close</button>
             {props.children}
             <h1>Mountain Dwarf</h1>
-            <img src="https://www.dndbeyond.com/avatars/9/361/636327455772826858.jpeg?width=1000&height=1000&fit=bounds&quality=95&auto=webp"/>
-            <p>Dragonborn look very much like dragons standing erect in humanoid form, though they lack wings or a tail.</p>
-            <p>Racial Traits: Draconic Ancestry, Breath Weapon, Damage Resistance</p>
-            <button onClick={()=>setShowDraconicAncestory(!showDraconicAncestory)}><p>Draconic Ancestory</p></button>
+            <img src="https://www.dndbeyond.com/avatars/9/364/636327456390157492.jpeg?width=1000&height=1000&fit=bounds&quality=95&auto=webp"/>
+            <p>Bold and hardy, dwarves are known as skilled warriors, miners, and workers of stone and metal.</p>
+            <p>As a mountain dwarf, you’re strong and hardy, accustomed to a difficult life in rugged terrain. You’re probably on the tall side (for a dwarf), and tend toward lighter coloration. The shield dwarves of northern Faerûn, as well as the ruling Hylar clan and the noble Daewar clan of Dragonlance, are mountain dwarves.</p>
+            <p>Racial Traits: Darkvision, Dwarven Resilience, Dwarven Combat Training, Tool Proficiency, Stonecunning, Dwarven Armor Training</p>
+            <button onClick={()=>setShowDarkVision(!showDarkVision)}><p>Darkvision</p></button>
                 {
-                    showDraconicAncestory?<p>You have draconic ancestry. Your breath weapon and damage resistance are determined by the dragon type. Choose one type of dragon from the Draconic Ancestry: Black: Acid, Blue: Lightning, Brass: Fire, Bronze: Lightning, Copper: Acid, Gold: Fire, Green: Poison, Red: Fire, Silver: Cold, White: Cold.</p>
+                    showDarkVision?<p>Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.</p>
                     :null
                 }
             <br></br>
-            <button onClick={()=>setShowBreathWeapon(!showBreathWeapon)}><p>Breath Weapon</p></button>
+            <button onClick={()=>setShowDwarvenResilience(!showDwarvenResilience)}><p>Dwarven Resilience</p></button>
                 {
-                    showBreathWeapon?<p>
-                        You can use your action to exhale destructive energy. Your draconic ancestry determines the size, shape, and damage type of the exhalation. When you use your breath weapon, each creature in the area of the exhalation must make a saving throw, the type of which is determined by your draconic ancestry. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
+                    showDwarvenResilience?<p>You have advantage on saving throws against poison, and you have resistance against poison damage.
                     </p>:null
                 }
             <br></br>
-            <button onClick={()=>setShowDamageResistance(!showDamageResistance)}><p>Damage Resistance</p></button>
+            <button onClick={()=>setShowDwarvenCombatTraining(!showDwarvenCombatTraining)}><p>Dwarven Combat Training</p></button>
                 {
-                    showDamageResistance?<p>
-                        You have resistance to the damage type associated with your draconic ancestry.
+                    showDwarvenCombatTraining?<p>
+                        You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.
                     </p>:null
+                }
+            <br></br>
+            <button onClick={()=>setShowToolProficiency(!showToolProficiency)}><p>Tool Proficiency</p></button>
+                {
+                    showToolProficiency?<p>
+                        You gain proficiency with the artisan’s tools of your choice: smith’s tools, brewer’s supplies, or mason’s tools.
+                    </p>:null
+                }
+            <br></br>
+            <button onClick={()=>setShowStonecunning(!showStonecunning)}><p>Stonecunning</p></button>
+                {
+                    showStonecunning?<p>
+                        Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus.
+                    </p>:null
+                }
+            <br></br>
+            <button onClick={() => setShowDwarvenArmorTraining(!showDwarvenArmorTraining)}><p>Dwarven Armor Training</p></button>
+                {
+                    showDwarvenArmorTraining?
+                    <p>You have proficiency with light and medium armor.</p>:null
                 }
             <br></br>
             <button name="Mountain Dwarf" className="select-btn" onClick={(e) => handleClick(e)}>select</button>

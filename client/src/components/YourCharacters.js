@@ -8,6 +8,19 @@ import RaceDetails from "./YourCharacterDetails/RaceDetails"
 export default function YourCharacters({user, characters, onUpdateCharacter, onDeleteCharacter, abilities, onUpdateAbilities, onDeleteAbility, characterClasses, onUpdateCharacterClass, onDeleteCharacterClass, descriptions, onUpdateDescription, onDeleteDescription, races, onUpdateRace, onDeleteRace}) {
     console.log("full characters: ", characters)
 
+    // const [toggleEditMode, setToggleEditMode] = useState(false)
+
+    // const changeEdit = () => {
+    //     setToggleEditMode(!toggleEditMode)
+    // }
+
+    // const submitForm = (formData) => {
+    //     changeEdit()
+    //     const updatedchar = {
+    //         background: formData.background
+    //     }
+    //     onUpdatedCharacter(character)
+    // }
     // const [charState, setCharState] = useState([])
 
     // function handleDeleteCharacter(character_id) {
@@ -153,8 +166,7 @@ export default function YourCharacters({user, characters, onUpdateCharacter, onD
                         <button type="submit" className="form">Update details</button>
                     </form> */}
                     </div>
-                    {/* <button >Delete Character</button> */}
-                    {/* onClick={() => { console.log(character); handleDeleteCharacter(character.character.id) }} */}
+                    <button onClick={() => { console.log(character); onDeleteCharacter(character.character.id) }}>Delete Character</button>
                 </div>
                     <br></br>
                     <br></br>
