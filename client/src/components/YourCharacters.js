@@ -8,23 +8,23 @@ import RaceDetails from "./YourCharacterDetails/RaceDetails"
 export default function YourCharacters({user, characters, onUpdateCharacter, onDeleteCharacter, abilities, onUpdateAbilities, onDeleteAbility, characterClasses, onUpdateCharacterClass, onDeleteCharacterClass, descriptions, onUpdateDescription, onDeleteDescription, races, onUpdateRace, onDeleteRace}) {
     console.log("full characters: ", characters)
 
-    const [charState, setCharState] = useState([])
+    // const [charState, setCharState] = useState([])
 
-    function handleDeleteCharacter(character_id) {
-        fetch(`/characters/${character_id}`, {
-            method: "DELETE",
-        })
-        .then((res) => {
-            return res.json()
-        }).then(() => {
-            const filteredChars = characters.filter((char) => char.character_id !== character_id);
-            setCharState(filteredChars)
-        })
-    }
+    // function handleDeleteCharacter(character_id) {
+    //     fetch(`/characters/${character_id}`, {
+    //         method: "DELETE",
+    //     })
+    //     .then((res) => {
+    //         return res.json()
+    //     }).then(() => {
+    //         const filteredChars = characters.filter((char) => char.character_id !== character_id);
+    //         setCharState(filteredChars)
+    //     })
+    // }
 
     // function handleCharacterUpdate(event){
     //     event.preventDefault()
-    //     fetch(`/characters/${id}`, {
+    //     fetch(`/characters/${character_id}`, {
     //       method: "PATCH",
     //       headers: {
     //           'Content-Type': 'application/json'
@@ -33,13 +33,13 @@ export default function YourCharacters({user, characters, onUpdateCharacter, onD
     //           name: event.target.name.value,
     //           image: event.target.image.value,
     //           campaign_id: event.target.campaign.value,
-    // //       })
-    // //     })
-    // //     .then(response => response.json())
-    // //     .then(updatedCostume => {
-    // //       onUpdateCostume(updatedCostume)
-    // //     })
-    // //   }
+    //       })
+    //     })
+    //     .then(response => response.json())
+    //     .then(updatedCharacter => {
+    //       onUpdateCharacter(updatedCharacter)
+    //     })
+    //   }
 
     // const characterComponents = characters.map(character => {
     //     return(
@@ -143,17 +143,18 @@ export default function YourCharacters({user, characters, onUpdateCharacter, onD
                     </div>
                     <br></br>
                     <div>
-                        <h3>Update Character Details</h3>
-                    <form>
+                        {/* <h3>Update Character Details</h3> */}
+                    {/* <form onSubmit={handleCharacterUpdate}>
                         <input type="text" name="name" placeholder="Name" className="form"/>
                         <input type="integer" name="price" placeholder="Price" className="form" />
                         <input type="text" name="image" placeholder="Image" className="form" />
                         <input type="text" name="description" placeholder="description" className="form" />
                         <input type="text" name="link" placeholder="Link" className="form" />
                         <button type="submit" className="form">Update details</button>
-                    </form>
+                    </form> */}
                     </div>
-                    <button onClick={() => { console.log(character); handleDeleteCharacter(character.character.id) }}>Delete Character</button>
+                    {/* <button >Delete Character</button> */}
+                    {/* onClick={() => { console.log(character); handleDeleteCharacter(character.character.id) }} */}
                 </div>
                     <br></br>
                     <br></br>

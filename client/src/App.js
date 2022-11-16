@@ -12,12 +12,11 @@ import Navbar from "./components/Navbar";
 import Race from './components/Race';
 import Register from "./components/Register";
 import YourCharacters from './components/YourCharacters';
-import YourAccount from './components/YourCampaign';
-import CharacterDetails from './components/CharacterDetails'
+import MoodCrud from './components/MoodCrud'
+import MoodComponents from './components/MoodComponents'
 export const CharContext = React.createContext()
 
 function App() {
-  //user useState
   const storedChar = localStorage.getItem('currentChar')
   const [currentUser, setCurrentUser] = useState(false)
   const [currentChar, setCurrentChar] = useState(null)  
@@ -26,7 +25,7 @@ function App() {
   const [characterClasses, setCharacterClasses] = useState([])
   const [descriptions, setDescriptions] = useState([])
   const [races, setRaces] = useState([])
-  const [campaigns, setCampaigns] = useState([])
+  const [moods, setMoods] = useState([])
 
   console.log("currentUser", currentUser)
   console.log("currentChar", currentChar)
@@ -196,12 +195,12 @@ function App() {
         return race;
       }
     });
-    setDescriptions(updatedRacesArray)
+    setRaces(updatedRacesArray)
   }
 
   function handleDeleteRace(id) {
     const updatedRacesArray = races.filter((race => race.id !== id));
-    setDescriptions(updatedRacesArray)
+    setRaces(updatedRacesArray)
   }
 
   //end of /races CRUD
@@ -209,32 +208,62 @@ function App() {
 
   // // /campaigns CRUD below
 
-  useEffect(() => {
-    fetch("/campaigns")
-    .then((res) => res.json())
-    .then((campaigns) => setCampaigns(campaigns))
-  }, [])
+  // useEffect(() => {
+  //   fetch("/campaigns")
+  //   .then((res) => res.json())
+  //   .then((campaigns) => setCampaigns(campaigns))
+  // }, [])
 
-  function handleAddCampaign(newCampaign){
-    const newCampaignArray = [...campaigns, newCampaign]
-    setCampaigns(newCampaignArray) //update once you add filters, if you do
-  }
+  // function handleAddCampaign(newCampaign){
+  //   const newCampaignArray = [...campaigns, newCampaign]
+  //   setCampaigns(newCampaignArray) //update once you add filters, if you do
+  // }
 
-  function handleUpdateCampaign(updatedCampaign) {
-    const updatedCampaignArray = campaigns.map((campaign) => {
-      if (campaign.id === updatedCampaign.id) {
-        return updatedCampaign;
-      } else {
-        return campaign;
-      }
-    });
-    setCampaigns(updatedCampaignArray)
-  }
+  // function handleUpdateCampaign(updatedCampaign) {
+  //   const updatedCampaignArray = campaigns.map((campaign) => {
+  //     if (campaign.id === updatedCampaign.id) {
+  //       return updatedCampaign;
+  //     } else {
+  //       return campaign;
+  //     }
+  //   });
+  //   setCampaigns(updatedCampaignArray)
+  // }
 
-  function handleDeleteCampaign(id) {
-    const updatedCampaignArray = campaigns.filter((campaign => campaign.id !== id));
-    setCampaigns(updatedCampaignArray)
-  }
+  // function handleDeleteCampaign(id) {
+  //   const updatedCampaignArray = campaigns.filter((campaign => campaign.id !== id));
+  //   setCampaigns(updatedCampaignArray)
+  // }
+
+  // // Mood CRUD
+  // useEffect(() => {
+  //   fetch(`/moods`)
+  //   .then((res) => res.json())
+  //   .then((moods) => setMoods(moods))
+  // }, [])
+
+  // function handleAddMood(newMood){
+  //   const newMoodsArray = [...moods, newMood]
+  //   setMoods(newMoodsArray) //update once you add filters, if you do
+  // }
+
+  // function handleUpdateMood(updatedMood) {
+  //   const updatedMoodsArray = moods.map((mood) => {
+  //     if (mood.id === updatedMood.id) {
+  //       return updatedMood;
+  //     } else {
+  //       return mood;
+  //     }
+  //   });
+  //   setMoods(updatedMoodsArray)
+  // }
+
+  // function handleDeleteMood(id) {
+  //   const updatedMoodsArray = moods.filter((mood => mood.id !== id));
+  //   setMoods(updatedMoodsArray)
+  // }
+//end of Status CRUD
+
 
   return (
     <>
@@ -285,10 +314,19 @@ function App() {
               onDeleteRace={handleDeleteRace}
               />
             </Route>
+            <Route exact path="/moods">
+              <MoodCrud />
+            </Route>
+            <Route exact path="/moods_components">
+              <MoodComponents
+                // moods={moods}
+                // user={currentUser}
+                // handleAddMood={handleAddMood}
+                // handleUpdateMood={handleUpdateMood}
+                // handleDeleteMood={handleDeleteMood}
+              />
+            </Route>
           </CharContext.Provider>
-          <Route exact path="/users">
-            <YourAccount />
-          </Route>
           <Route path="*">
             <h1>404 Error: Sorry we can't find your page</h1>
           </Route>

@@ -265,4 +265,19 @@ Description.create!([{
     character_id: 4
 }])
 
-  puts "Finished seeding!"
+puts "Seeding Moods..."
+Mood.create!([{
+    mood: "Looking for a new campaign to play in",
+    user_id: 1
+},
+{
+    mood: "Game night on Friday was great!",
+    user_id: 2
+},
+{
+    mood: "Huzzah!",
+    user_id: 3
+}])
+
+
+puts "Finished seeding!"
