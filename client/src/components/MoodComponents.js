@@ -47,7 +47,7 @@ function MoodComponents({user, onUpdateRace}) {
 
     return(
         <>
-        <h1>Updating Users:</h1>
+        <h1>Updating Races:</h1>
         <ul>{raceMap}</ul>
         </>
     )

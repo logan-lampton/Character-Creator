@@ -27,17 +27,22 @@ function MoonCrud({race, onUpdateRace}) {
         })
     };
 
-    function handleDeleteRace(id) {
-        fetch(`races/${id}`, {
-            method: "DELETE",
-        })
-        .catch((error) => console.log(error))
-        // .then((res) => res.json())
-        // .then(() => {
-        //     const filteredRaces = races.filter((race) => race.id !== id);
-        //     setRaces(filteredRaces)
-        // })
-    }
+    // function handleDeleteRace(race_id) {
+    //     fetch(`races/${race_id}`, {
+    //         method: "DELETE",
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //           },
+    //           body: JSON.stringify(handleDeleteRace)
+    //     })
+    //     // .catch((error) => console.log(error))
+    //     // .then((res) => res.json())
+    //     // .then(console.log(`races/${race_id}`))
+    //     // .then(() => {
+    //     //     const filteredRaces = races.filter((race) => race.id !== id);
+    //     //     setRaces(filteredRaces)
+    //     // })
+    // }
 
 
 console.log("Race: ", race)
@@ -52,13 +57,15 @@ return(
         alt={character.character.name}
         className="card__image"
     /> */}
-    <form onSubmit={handleUpdateRace}>
-        <div>
-            <input type="text" name="name" placeholder="Update Race"/>
-        </div>
-        <button type="submit">Update Race</button>
-    </form>
-    <button onClick={handleDeleteRace}>Delete Character Race</button>
+    <div>
+        <form onSubmit={handleUpdateRace}>
+            <div>
+                <input type="text" name="name" placeholder="Update Race"/>
+            </div>
+            <button type="submit">Update Race</button>
+        </form>
+        {/* <button onClick={handleDeleteRace}>Delete Character Race</button> */}
+    </div>
     </>
 )
 

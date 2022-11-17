@@ -80,12 +80,9 @@ function App() {
     fetch(`/characters/${character_id}`, {
         method: "DELETE",
     })
-    .then((res) => {
-        console.log(res)
-        return res.json()
-    }).then(() => {
+    .then((res) => res.json())
+    .then(() => {
         const filteredChars = characters.filter((char) => char.character_id !== character_id);
-        console.log(filteredChars)
         setCharacters(filteredChars)
     })
   }
