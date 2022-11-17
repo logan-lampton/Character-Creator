@@ -90,6 +90,20 @@ function App() {
     })
   }
 
+  function handleDeleteRace(id) {
+    fetch(`/races/${id}`, {
+        method: "DELETE",
+    })
+    .then((res) => {
+        console.log(res)
+        return res.json()
+    }).then(() => {
+        const filteredRaces = races.filter((race) => race.id !== id);
+        console.log(filteredRaces)
+        setRaces(filteredRaces)
+    })
+  }
+
 
   //end of /characters CRUD
 
@@ -213,10 +227,10 @@ function App() {
     setRaces(updatedRacesArray)
   }
 
-  function handleDeleteRace(id) {
-    const updatedRacesArray = races.filter((race => race.id !== id));
-    setRaces(updatedRacesArray)
-  }
+  // function handleDeleteRace(id) {
+  //   const updatedRacesArray = races.filter((race => race.id !== id));
+  //   setRaces(updatedRacesArray)
+  // }
 
   //end of /races CRUD
 
@@ -331,18 +345,23 @@ function App() {
               onDeleteRace={handleDeleteRace}
               />
             </Route>
-            {/* <Route exact path="/mood_crud">
-              <MoodCrud />
+            <Route exact path="/mood_crud">
+              <MoodCrud 
+              onUpdateCharacter={handleUpdateCharacter}
+              onUpdateRace={handleUpdateRace}
+              onDeleteRace={handleDeleteRace}
+              />
             </Route>
             <Route exact path="/moods">
-              <MoodComponents */}
-                {/* // moods={moods}
-                // user={currentUser}
-                // handleAddMood={handleAddMood}
-                // handleUpdateMood={handleUpdateMood}
-                // handleDeleteMood={handleDeleteMood}
+              <MoodComponents
+                // moods={moods}
+                user={currentUser}
+                onUpdateRace={handleUpdateRace}
+                // // handleAddMood={handleAddMood}
+                // // handleUpdateMood={handleUpdateMood}
+                // // handleDeleteMood={handleDeleteMood}
               />
-            </Route> */}
+            </Route>
           </CharContext.Provider>
           <Route path="*">
             <h1>404 Error: Sorry we can't find your page</h1>
