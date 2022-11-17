@@ -8,23 +8,10 @@ function Gnome(props) {
         props.setTrigger(false)
     };
 
-    const draconicAncestory = [
-        {value: "black", label: "Black Dragon"},
-        {value: "blue", label: "Blue Dragon"},
-        {value: "brass", label: "Brass Dragon"},
-        {value: "bronze", label: "Bronze Dragon"},
-        {value: "copper", label: "Copper Dragon"},
-        {value: "gold", label: "Gold Dragon"},
-        {value: "green", label: "Green Dragon"},
-        {value: "red", label: "Red Dragon"},
-        {value: "silver", label: "Silver Dragon"},
-        {value: "white", label: "White Dragon"}
-    ];
-
-    const [showDraconicAncestory, setShowDraconicAncestory] = useState(false)
-    const [showBreathWeapon, setShowBreathWeapon] = useState(false)
-    const [showDamageResistance, setShowDamageResistance] = useState(false)
-
+    const [showDarkvision, setShowDarkvision] = useState(false)
+    const [showGnomeCunning, setShowGnomeCunning] = useState(false)
+    const [showArtificersLore, setShowArtificersLore] = useState(false)
+    const [showTinker, setShowTinker] = useState(false)
 
     return (props.trigger) ? (
     <>
@@ -33,26 +20,34 @@ function Gnome(props) {
             <button className="close-btn" onClick={() => props.setTrigger(false)}>close</button>
             {props.children}
             <h1>Gnome</h1>
-            <img src="https://www.dndbeyond.com/avatars/9/361/636327455772826858.jpeg?width=1000&height=1000&fit=bounds&quality=95&auto=webp"/>
-            <p>Dragonborn look very much like dragons standing erect in humanoid form, though they lack wings or a tail.</p>
-            <p>Racial Traits: Draconic Ancestry, Breath Weapon, Damage Resistance</p>
-            <button onClick={()=>setShowDraconicAncestory(!showDraconicAncestory)}><p>Draconic Ancestory</p></button>
+            <img src="https://www.dndbeyond.com/avatars/9/375/636327458223897714.jpeg?width=1000&height=1000&fit=bounds&quality=95&auto=webp"/>
+            <p>A gnome’s energy and enthusiasm for living shines through every inch of his or her tiny body.</p>
+            <p>As a rock gnome, you have a natural inventiveness and hardiness beyond that of other gnomes. Most gnomes in the worlds of D&D are rock gnomes, including the tinker gnomes of the Dragonlance setting.</p>
+            <p>Racial Traits: Darkvision, Gnome Cunning, Artificer’s Lore, Tinker</p>
+            <button onClick={()=>setShowDarkvision(!showDarkvision)}><p>Darkvision</p></button>
                 {
-                    showDraconicAncestory?<p>You have draconic ancestry. Your breath weapon and damage resistance are determined by the dragon type. Choose one type of dragon from the Draconic Ancestry: Black: Acid, Blue: Lightning, Brass: Fire, Bronze: Lightning, Copper: Acid, Gold: Fire, Green: Poison, Red: Fire, Silver: Cold, White: Cold.</p>
+                    showDarkvision?<p>Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.</p>
                     :null
                 }
             <br></br>
-            <button onClick={()=>setShowBreathWeapon(!showBreathWeapon)}><p>Breath Weapon</p></button>
+            <button onClick={()=>setShowGnomeCunning(!showGnomeCunning)}><p>Gnome Cunning</p></button>
                 {
-                    showBreathWeapon?<p>
-                        You can use your action to exhale destructive energy. Your draconic ancestry determines the size, shape, and damage type of the exhalation. When you use your breath weapon, each creature in the area of the exhalation must make a saving throw, the type of which is determined by your draconic ancestry. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
+                    showGnomeCunning?<p>
+                        You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic.
                     </p>:null
                 }
             <br></br>
-            <button onClick={()=>setShowDamageResistance(!showDamageResistance)}><p>Damage Resistance</p></button>
+            <button onClick={()=>setShowArtificersLore(!showArtificersLore)}><p>Artificer’s Lore</p></button>
                 {
-                    showDamageResistance?<p>
-                        You have resistance to the damage type associated with your draconic ancestry.
+                    showArtificersLore?<p>
+                        Whenever you make an Intelligence (History) check related to magic items, alchemical objects, or technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply.
+                    </p>:null
+                }
+            <br></br>
+            <button onClick={()=>setShowTinker(!showTinker)}><p>Tinker</p></button>
+                {
+                    showTinker?<p>
+                        You have proficiency with artisan’s tools (tinker’s tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time. When you create a device, choose one of the following options: Clockwork Toy. This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents. Fire Starter. The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action. Music Box. When opened, this music box plays a single song at a moderate volume. The box stops playing when it reaches the song’s end or when it is closed.
                     </p>:null
                 }
             <br></br>

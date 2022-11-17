@@ -8,6 +8,28 @@ import RaceDetails from "./YourCharacterDetails/RaceDetails"
 export default function YourCharacters({user, characters, onUpdateCharacter, onDeleteCharacter, abilities, onUpdateAbilities, onDeleteAbility, characterClasses, onUpdateCharacterClass, onDeleteCharacterClass, descriptions, onUpdateDescription, onDeleteDescription, races, onUpdateRace, onDeleteRace}) {
     console.log("full characters: ", characters)
 
+    // function handleUpdateCharacter(event){
+    //     event.preventDefault()
+    //     fetch(`/characters/${id}`, {
+    //       method: "PATCH",
+    //       headers: {
+    //           'Content-Type': 'application/json'
+    //       },
+    //       body: JSON.stringify({
+    //           name: event.target.name.value,
+    //           price: event.target.price.value,
+    //           image: event.target.image.value,
+    //           description: event.target.description.value,
+    //           link: event.target.link.value
+    //       })
+    //     })
+    //     .then(response => response.json())
+    //     .then(updatedCharacter => {
+    //         onUpdateCharacter(updatedCharacter)
+    //     })
+    //   }
+
+
     // const [toggleEditMode, setToggleEditMode] = useState(false)
 
     // const changeEdit = () => {
