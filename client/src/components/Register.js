@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useHistory, Link} from 'react-router-dom'
+import {useHistory, Link, Redirect} from 'react-router-dom'
 
 function Register({updateUser}) {
     const [formData, setFormData] = useState({
@@ -35,10 +35,12 @@ function Register({updateUser}) {
         .then(user => {
             updateUser(user)
             history.push(`/users/${user.id}`)
+            window.location="/"
         })
         // }else {
         //     res.json().then(json => setErrors(this.entries(json.errors)))
         // }
+    
     }
 
     //telling the app to update the form to reflect what the user types into the physical space

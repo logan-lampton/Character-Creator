@@ -33,6 +33,7 @@ function Login({updateUser}) {
             res.json().then(user => {
                 updateUser(user)
                 history.push(`/users/${user.id}`)
+                window.location="/home"
             })
         }else {
             res.json().then(json => setErrors(json.errors))
