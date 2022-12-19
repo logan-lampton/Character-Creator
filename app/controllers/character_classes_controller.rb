@@ -43,12 +43,12 @@ end
 
 # DELETE /character_classes/:id
 def destroy
-    character_class = CharacterConnection.find(params[:id])
+    character_class = CharacterClass.find(params[:id])
     if character_class
         character_class.destroy
         render json: {}, status: :no_content
     else
-        render json: {error: "Character connection not found"}, status: :not_found
+        render json: {error: "Character class not found"}, status: :not_found
     end
 end
 
