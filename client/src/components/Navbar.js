@@ -26,7 +26,7 @@ function Navbar({currentUser, updateUser}) {
                     <li><Link to="/ablities"><h2>Abilities</h2></Link></li>
                     <li><Link to="/descriptions"><h2>Description</h2></Link></li>
                     <li onClick="window.location.reload(true)"><Link to="/characters"><h2>Your Characters</h2></Link></li>
-                    <li><Link to="/moods"><h2>Updating Race</h2></Link></li>
+                    {/* <li><Link to="/moods"><h2>Updating Race</h2></Link></li> */}
                     {currentUser && <li className="link" onClick={handleLogOut}><h2>Logout</h2></li>}
                 </ul>
             </nav>
